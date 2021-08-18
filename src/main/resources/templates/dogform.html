@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dog Form</title>
+</head>
+<body>
+<form th:object="${dog}" th:action="@{/save}" method="POST">
+    <label for="name">Name:</label>
+    <br/>
+    <input type="text" id="name" placeholder="e.g. Pilu" th:field="*{name}">
+    <br/>
+    <label for="age">Age:</label>
+    <br/>
+    <input type="number" id="age" min="0" max="20" th:field="*{age}">
+    <br/>
+    <label for="breed">Breed:</label>
+    <br/>
+    <select id="breed" th:field="*{breed}">
+        <option th:each="breed : ${breeds}" th:value="${breed.getBreedName()}" th:text="${breed.getBreedName()}"></option>
+    </select>
+    <input type="submit" name="action" value="Create">
+    <input type="submit" name="action" value="Update">
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dogs</title>
+</head>
+<body>
+    <button onclick="location.href='/generate'">Generate Dog</button>
+    <button onclick="location.href='/newdog'">Specify Dog</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Age</b></td>
+                <td><b>Breed</b></td>
+            </tr>
+        </thead>
+        <tbody th:if="${not #lists.isEmpty(allDogs)}">
+            <tr th:each="dog : ${allDogs}">
+                <td th:text="${dog.getName()}"></td>
+                <td th:text="${dog.getAge()}"></td>
+                <td th:text="${dog.getBreed().getBreedName()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
